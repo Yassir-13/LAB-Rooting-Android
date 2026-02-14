@@ -20,6 +20,61 @@ AVB est la version moderne de Verified Boot qui est intégrée depuis le version
 # Rooting : 
 Le rooting est l'operation qui nous donne accès au privilege du super-utilisateur dans notre système Android de test. 
 Cela modifie les protections et la confiance du système et utile car on peut accéder et modifier des fichiers protégés. 
+Cette operation est effectuer via des commandes adb sur notre AVD.
+
+![1](222.png)
+
+# 8 RISQUE :
+
+1. Une mauvaise configuration de notre labo peut menée a des résultats incohérentes a la situation actuelle ou au résultats attendus
+
+2.Une surface d’attaque accrue hors du labo peut exposer l’appareil à des menaces externes imprévues.
+
+3.Une mauvaise gestion des permissions peut par accident masquer certaines vulnérabilités dans notre environnement de test.
+
+4.Une traçabilité insuffisante empêche de reproduire ou d’auditer correctement les tests effectués.
+
+5.Un réseau non isolé peut causer des impacts involontaires sur des systèmes externes.
+
+6.Un nettoyage insuffisant en fin de séance peut laisser persister des données sensibles sur l’appareil.
+
+7.L'utilisation de notre appareil personnel pour effectuer de tests peut violer certaines conditions d'intégrité et meme laisser ou créer des vulnérabilités.
+
+8.La présence de données sensibles peut entraîner une violation de confidentialité en cas d’accès non autorisé.
+
+
+# 8 Mesures défensives :
+
+1.Utilise un labo dédiée au test, nettoyer après chaque recherche.
+
+2.Ne jamais utiliser nos appareil personnelles et utilise uniquement des donnees fictives pour éliminer tout risque.
+
+3. Création d'un réseau interne et privée pour effectuer nos tests.
+
+4.Ne pas tester sur n'importe quelle apk, uniquement sur les apk dédier a ce genre de tests ou ceux dont on a l'autorisation.
+
+5.Journal de configuration détaillé pour assurer la reproductibilité.
+
+6.L'utilisation des device ou AVD dédié exclusivement aux tests de sécurité.
+
+7.Limiter l’usage du root aux étapes nécessaires.
+
+8.Effectuer un reset complet ou supprimer l’AVD après chaque tests.
+
+# MASVS :
+
+1. MASVS-AUTH-1 :
+L’application doit utiliser des protocoles d’authentification et d’autorisation sécurisés, en respectant les bonnes pratiques. Même si le contrôle principal est côté serveur, l’application mobile doit implémenter correctement ces mécanismes pour éviter les failles.
+
+2. MASVS-CODE-1 :
+L’application doit exiger une version récente et supportée du système d’exploitation afin de bénéficier des correctifs de sécurité et des protections modernes.
+
+
+# MASTG :
+
+1.MASTG-TEST-0311: Insecure Random API Usage : Certaines applications iOS utilisent des générateurs de nombres pseudo-aléatoires non sécurisés comme rand et  pas de générateurs cryptographiquement sûrs. Ce test vise à détecter l’usage de ces fonctions. L’analyse peut être réalisée par analyse statique ou dynamique pour identifier les appels aux API de génération aléatoire.
+
+2.MASTG-TEST-0241: Runtime Use of Jailbreak Detection Techniques: Ce test vérifie si une application iOS est capable de détecter qu’elle s’exécute sur un appareil jailbreaké.
 
 
 
@@ -51,3 +106,9 @@ Puis finalement, SQL Injection pour tester l’absence de validation d’entrée
 
 ![9](11.png)
 
+# Remise à zéro AVD
+
+Dans mon cas, au lieu de choisir la remise à zéro de mon AVD, j’ai choisi de la supprimer, puisque je l’avais utilisée uniquement pour sa compatibilité avec l’application Diva. J’ai donc décidé de la supprimer complètement afin de libérer de l’espace disque pour créer une nouvelle AVD, meilleure et plus adaptée.
+
+![10](333.png)
+![11](444.png)
